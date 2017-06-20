@@ -1,0 +1,36 @@
+package practice;
+
+public class practice3 {
+
+	public static void main(String[] args) {
+//		String[] s = new String[5];
+//		s[0] = "yo";
+//		s[1] = "yo";
+//		s[2] = "yo";
+//		s[3] = "yo";
+//		s[4] = "yo";
+//		for (String c: s) {
+//			System.out.print(c);
+//		}
+		
+		String x = "yo";
+		String y = new String("yo");
+		
+//		System.out.println(x == y);
+//		System.out.println(x.equals(y));
+		
+		System.out.println(doubleChar("heythere"));
+		
+		
+
+	}
+	
+	private static String doubleChar(String str) {
+		  String newString = "";
+		  for (int i = 0; i < str.length(); i++) {
+		     newString += str.charAt(i) + str.charAt(i);
+		  }
+		  return newString;
+		}
+
+}

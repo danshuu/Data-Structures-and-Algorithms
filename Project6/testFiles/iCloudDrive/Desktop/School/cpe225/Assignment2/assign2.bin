@@ -1,0 +1,15 @@
+0011 0000 0000 0000;
+
+0101 000 000 1 00000; clear r0, counts 1s (5020)
+0101 001 001 1 00000; clear r1, mask  (5260)
+0010 011 011111101; (LD) load x3100 to r3 (26FD)
+0001 001 001 1 00001; add mask (1) (1261)
+0101 010 011 000 001 ;AND r3 with mask,store in r4 new register ;(54C1)
+0000 010 000000001; branch to x3007 (0401)
+0001 000 000 1 00001; ADD 1 to r0 (if it was a 1) (1021)
+0001 001 001 000 001; left shift the mask (1241)
+0000 101 111111011; n or p then branch back to x3004 (0BFB)
+0011 000 011110111; store in 3101 (30F7)
+
+
+1111 0000 0010 0101; HALT (F025)

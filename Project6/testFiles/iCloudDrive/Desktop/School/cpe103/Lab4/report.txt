@@ -1,0 +1,21 @@
+                      each         each        each         each
+    Iterations     O(1) push     O(1) pop    O(N) push    O(N)pop
+    -------------------------------------------------------------
+    1                8000 ns      2800 ns      8000 ns     2800 ns
+    10               1000 ns       430 ns      1200 ns      700 ns
+    100               350 ns       180 ns      1500 ns     1500 ns
+    1000              550 ns       210 ns      4000 ns     5600 ns
+    10000             200 ns       120 ns      6300 ns     5000 ns
+    100000            120 ns        45 ns     42000 ns    40000 ns
+    1000000            85 ns        40 ns    433285 ns   500000 ns
+    -------------------------------------------------------------
+
+
+    In my findings for this program, I implemented the program in a O(1) (
+SimpleArrayStack) algorithm and a O(n) (BadStack) algorithm and compared the running times of both programs against varied numbers of iterations. What I did was take the average time of each push/pop method within a loop of N iterations. Each iteration times one push/pop method and the number is added all up within the loop and divided by the number of iterations outside the loop to calculate the average time it took to run each pop/push method. 
+
+    Something that surprised me in this experimentation was that the O(1) 
+grew faster with more and more iterations each time running it while O(n) slowed down with more and more iterations, which was expected. O(1) grew faster even though it's in a loop of N iterations, so I safely assumed that it would get hindered with a larger number of iterations. I was also surprised to see that the pop method didn't double the push times, considering that the pop had 2 loops while push had 1 loop over the same number of iterations. Moreover, pop was actually faster than the push in most cases, particularly for O(1).
+
+    I would assume that the O(1) grows increasingly faster is that the
+setup time takes much longer than the runtime. Therefore, by taking the average of a larger sample size would dilute the original setup time and gets it closer to the accurate amount of time it takes to actually run each push/pop method.

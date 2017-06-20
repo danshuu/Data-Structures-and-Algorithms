@@ -1,0 +1,13 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class TestDriver {
+
+   public static void main(String[] args) throws FileNotFoundException, IOException {
+      Huffman huffts = new Huffman("test1");
+      huffts.decompress("compressOut.txt", "decompressOut.txt");
+      Huffman huffer = new Huffman("toStringTest1");
+      System.out.println( huffer.toString());
+   }
+
+}

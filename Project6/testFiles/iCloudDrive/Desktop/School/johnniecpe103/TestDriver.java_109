@@ -1,0 +1,14 @@
+import java.util.*;
+public class TestDriver {
+
+   public static void main(String[] args) {
+      TextToMorse translator = new TextToMorse();
+      String in = "NOW IS THE TIME FOR ALL GOOD MEN TO COME TO THE AID OF THEIR COUNTRY";
+      String expected = "-. --- .--  .. ...  - .... .  - .. -- .  ..-. --- .-.  .- .-.. .-..  --. --- --- -..  -- . -.  - ---  -.-. --- -- .  - ---  - .... .  .- .. -..  --- ..-.  - .... . .. .-.  -.-. --- ..- -. - .-. -.--"; 
+      
+      String out = translator.translate(in);
+      System.out.println("does out equal expected? " + out.equals(expected));
+      
+   }
+
+}

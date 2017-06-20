@@ -1,0 +1,15 @@
+
+public class TestDriver {
+
+   public static void main(String[] args) {
+      RecursiveLinkedList<Integer> list = new RecursiveLinkedList<Integer>();
+      list.add(0, 1);
+      list.add(1, 2);
+      System.out.println("the element in 1 is " + list.get(1));
+      System.out.println("The element in 0 is " + list.get(0));
+      list.remove(0);
+      System.out.println("Element after remove is " + list.get(0));
+
+   }
+
+}

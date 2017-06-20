@@ -1,0 +1,13 @@
+package practice;
+
+public class practice {
+	public static void main(String[] args) {
+		int x = 5;
+		System.out.println(x);
+		String y = x.toString();
+		System.out.println(y);
+		// TODO Auto-generated method stub
+
+	}
+
+}

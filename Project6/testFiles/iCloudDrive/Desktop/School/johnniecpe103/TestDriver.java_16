@@ -1,0 +1,13 @@
+
+public class TestDriver {
+
+   public static void main(String[] args) {
+      SimpleArrayStack<String> list = new SimpleArrayStack<String>();
+      String c = "abcde";
+      list.push(c);
+      System.out.println(list.peek());
+      System.out.println(list.pop());
+
+   }
+
+}

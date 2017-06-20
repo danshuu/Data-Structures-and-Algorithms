@@ -1,0 +1,109 @@
+; Daniel Shu
+; CPE 225
+; Assignment 3
+; This program translates words from English to Pig Latin (remove starting letter of word and put it at the end)
+; Program should prompt user for word to be translated 
+; Assume user will input word with no more than 19 chars, followed by <enter> key
+; Store word one character per location in memory. ***
+; Program may allocate room to store 20 characters, including <enter> key. (No more than 20 though)
+
+; HINT #1: using a TRAP x20 (GETC) followed by a TRASP x21 (OUT) will get keystrokes and echo them back to the console
+; Hint #2: The <enter> key is ASCII x0A or ASCII x0D. (It is different on the Windows and Linux machines. Check to see which one your machine uses.)
+; Hint #3: Do not use R7 to store anything for this assignment (will become clear later)
+
+; Translation Algorithm: Remove(don't print) the first letter of the word and put (print) it at the end of the word. Then add "ay" to the word.
+
+; print prompts for English word and Pig-Latin word
+; Extra Credit: A proper Pig Latin translator would check to see if the word started with a vowel and simply apped "way" to the end without removing anything from the front. Only handle lowercase letters  
+
+;***************PROGRAM STARTS**************
+
+.ORIG x3000 ; Start program at x3000
+START AND R0, R0, #0; (3000) Clear r0 
+AND R1, R1, #0; (3001) Clear r1
+AND R2, R2, #0; (3002) Clear r2
+AND R3, R3, #0; (3003) Clear r3
+AND R4, R4, #0; (3004) Clear r4
+
+LEA R0 PROMPT; (3005)
+PUTS; (3006) writes a string of ASCII characters into the console display (characters contained in consecutive memory addresses, starting with address in R0) 
+LEA R1, BLOCK; (3007) load BLOCK address into R1
+AGAIN GETC ; (3008) the character (stores in r0); Label AGAIN for branch
+OUT; (3009) echo back to console 
+STR R0, R1, #0; (300A) store r0 ASCII value into R1(block address)
+ADD R1, R1, #1; (300B) increment R1 (address of BLOCK)
+ADD R0, R0, #-10; (300C)subtract newline ASCII value from R0 to see if its an enter key
+BRnp AGAIN; (300D)if last result was negative or positive, branch AGAIN
+
+
+; Extra Credit: if it's a vowel, just append "way" to the word
+LD R2, BLOCK; (300E) load BLOCK address value (char) into R2 
+LD R3, SIXONE; (300F) load -97 into R3 so we can use it to check for an 'a'
+ADD R4, R2, R3; (3010) subtract 97 from R2 to check if its an 'a', store in R4
+BRz VOWEL; (3011) branch to VOWEL if zero
+ADD R4, R4, #-4; (3012) subtract 4 from R4 to see if its an 'e', store in R4
+BRz VOWEL; (3013) branch to VOWEL if zero
+ADD R4, R4, #-4; (3014) subtract 4 from R4 to see if its an 'i', store in R4
+BRz VOWEL; (3015) branch to VOWEL if zero
+ADD R4, R4, #-6; (3016) subtract 6 from R4 to see if its an 'o', store in R4
+BRz VOWEL; (3017) branch to VOWEL if zero
+ADD R4, R4, #-6; (3018) subtract 6 from R4 to see if its a 'u', store in R4
+BRz VOWEL; (3019) branch to VOWEL if zero
+
+; ****** START OF NON-VOWEL *****
+;NON VOWEL - move first character to the end and append "ay"
+
+; This block clears the enter key so it doesn't get printed
+LEA R0 PIGLATIN;
+PUTS;
+ADD R1, R1, #-1; the memory address before was the one holding the enter key before exiting the loop
+AND R0, R0, #0; clear R0
+STR R0, R1, #0; R0 holds 0, R1 holds the current address with enter value, and this makes it a 0
+
+; This block prints the second char till last char of the string
+LEA R0, BLOCK; load R0 with BLOCK first char
+ADD R0, R0, #1; increment R0 to skip first letter
+PUTS
+
+; This block prints the first letter of the string
+LD R0, BLOCK; load R0 with address of the BLOCK
+OUT; prints whatevers in R0 (R0 shouldn't be an address, but rather a value)
+
+; This block prints "ay"
+LEA R0, AY; load R0 with AY
+PUTS
+BRnzp START; skip to start
+; ****** END OF NON-VOWEL ******
+
+; ****** START OF VOWEL *******
+;VOWEL - just append "way"
+
+VOWEL LEA R0 PIGLATIN;
+PUTS;
+ADD R1, R1, #-1; decrement R1 in order to clear the address before, which contains the enter key
+AND R0, R0, #0; clear R0
+STR R0, R1, #0; store R0 in R1 to clear the value at R1's address
+LEA R0, BLOCK; load R0 with block address - VOWEL label
+PUTS
+
+LEA R0, WAY; load r0 with WAY address
+PUTS
+BRnzp START; skip to start
+; ******* END OF VOWEL ********
+
+
+HALTLABEL HALT 
+
+; Symbol table
+
+PROMPT .STRINGZ "English Word: " ; Allocates 14 spaces + null character (at the end of every STRINGZ)
+
+BLOCK .BLKW #20
+WAY .STRINGZ "way\n"; stringz for appending to vowel word
+AY .STRINGZ "ay\n"; stringz for appending to non-vowel word
+PIGLATIN .STRINGZ "Pig-Latin Word: "
+SIXONE .FILL xFF9F
+
+
+
+.END

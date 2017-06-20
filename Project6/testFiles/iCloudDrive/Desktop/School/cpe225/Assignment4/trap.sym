@@ -1,0 +1,14 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	DDR                     331A
+//	DSR                     3319
+//	KBDR                    3318
+//	KBSR                    3317
+//	POLL                    3306
+//	POLL2                   330D
+//	RETURN                  3311
+//	SAVER0                  331B
+//	SAVER1                  331C
+//	SAVER2                  331D
+//	SAVER3                  331E
+//	SAVER7                  331F

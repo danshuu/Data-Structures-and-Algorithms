@@ -1,0 +1,70 @@
+Daniel Shu: 
+Homework: 
+
+HW1: 0.9
+HW2: 0.68
+HW3: 1.0
+HW4: 1.0
+HW5: 1.0
+
+
+Labs: 
+
+Lab1: 0.9
+Lab2: 0.8
+Lab3: 1.0
+Lab4: 1.0
+
+
+Tests: 
+
+tests: 1.0
+tests2: 0.91
+
+
+Overall Grade for student(Daniel Shu): 93.43%
+
+Kayla: 
+Homework: 
+
+HW1: 0.8
+HW2: 1.0
+HW3: 1.0
+Hw4: 1.0
+
+
+Labs: 
+
+Lab1: 1.0
+Lab2: 1.0
+
+
+Tests: 
+
+Tests1: 0.78
+Tests2: 0.9
+
+
+Overall Grade for student(Kayla): 92.10000000000001%
+
+Stephanie: 
+Homework: 
+
+HW1: 1.0
+HW2: 0.5
+
+
+Labs: 
+
+Labs: 1.0
+Lab2: 0.5
+
+
+Tests: 
+
+Test1: 1.0
+Test2: 0.5
+
+
+Overall Grade for student(Stephanie): 75.0%
+

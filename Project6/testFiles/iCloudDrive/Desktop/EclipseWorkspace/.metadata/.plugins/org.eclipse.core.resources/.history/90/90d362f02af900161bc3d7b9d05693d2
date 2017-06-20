@@ -1,0 +1,29 @@
+
+public class Lab9 {
+
+	public static void main(String[] args) {
+		
+		System.out.println(isPrime(2));
+
+	}
+	
+	private static boolean isPrime(int value) {
+		if (value > 2 && value % 2 == 1) { //if odd number greater than 2
+
+		    //if not, then just check the odds
+		    for(int i=3;i<n;i=i+2) {
+		        if(n%i==0)
+		            return false;
+		    }
+		    return true;
+
+		} else if (value == 2) { //if 2
+			return true;
+		} else { //number less than 2 or even number greater than 2
+			return false;	
+		}
+		
+
+	}
+
+}

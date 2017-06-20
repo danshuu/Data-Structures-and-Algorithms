@@ -1,0 +1,15 @@
+
+public interface SimpleStack<T> {
+   T peek();
+   //Returns the element on the top of this stack (but does not remove it).
+   
+   T pop();
+   //Removes and returns the element on the top of this stack.
+   
+   void push(T element);
+   //Adds the specified element to the top of this stack.
+   
+   int size();
+   //Returns the number of elements in this stack.
+
+}

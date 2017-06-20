@@ -1,0 +1,74 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class TestDriver {
+   private static final SpellChecker dict;
+   private static final SpellChecker connectives;
+
+   static {
+      try {
+         dict = new SpellChecker();
+         connectives = new SpellChecker("connectives.txt");
+      } catch (FileNotFoundException e) {
+         throw new ExceptionInInitializerError(e);
+      }
+   }
+
+   public static void main(String[] args) throws FileNotFoundException {
+
+      HashMap<String, SpellChecker.MyStats> map =
+            dict.processFile("processFileTest2.txt");
+      System.out.println("the map size is: " + map.size());
+      SpellChecker.MyStats stats = map.get("the");
+      System.out.println("the occurences for the is: " + stats.getOccurrences());
+      
+      
+      
+      
+      
+      
+      
+//      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+//      System.out.println(table.tableSize());
+//      table.add(1);
+//      System.out.println("did we add 1: " + table.contains(1));
+//
+//      System.out.println("collisions: " + table.collisions());
+//      System.out.println("maxCollisions: " + table.collisions());
+//      
+//      
+//      table.add(102);
+//      System.out.println("did we add 102: " + table.contains(102));
+//
+//
+//      System.out.println("collisions: " + table.collisions());
+//      System.out.println("maxCollisions: " + table.maxCollisions());
+//
+//
+//      table.add(203);
+//      System.out.println("did we add 203: " + table.contains(203));
+//
+//
+//      System.out.println("collisions after 203 : " + table.collisions());
+//      System.out.println("maxCollisions after 203: " + table.maxCollisions());
+//      
+//      table.add(304);
+//      System.out.println("did we add 304: " + table.contains(304));
+//
+//
+//      System.out.println("collisions after 304 : " + table.collisions());
+//      System.out.println("maxCollisions after 304: " + table.maxCollisions());
+//      
+//      table.add(2);
+//      table.add(103);
+//      table.add(204);
+//      table.add(305);
+//      System.out.println("collisions: " + table.collisions());
+//      System.out.println("maxCollisions: " + table.maxCollisions());
+//      System.out.println("size: " + table.size());
+   }
+
+}

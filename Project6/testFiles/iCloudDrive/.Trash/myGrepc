@@ -1,0 +1,8 @@
+/* Name: Daniel Shu */
+/* Assignment 8 CPE225 */
+/* Write a program that will parse an input file searching for occurrences of a word. */
+/* It will output the total number of occurrences and all the lines with the word in it. */
+/* Assume no lines in the file will be longer than 100 characters */
+/* No assumptions made about how many occurrence of the word will be in the file */
+/* MUST use a linked list and allocate space for each word occurrence as you go */
+

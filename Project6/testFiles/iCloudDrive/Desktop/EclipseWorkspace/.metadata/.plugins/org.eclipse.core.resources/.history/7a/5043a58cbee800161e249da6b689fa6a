@@ -1,0 +1,17 @@
+package experimenting;
+
+public class practice {
+
+	public static void main(String[] args) {
+		String str = "3 5 7 9 11";
+		String[] split = str.split(" ");
+		String result = "";
+		
+		for (String each: split) {
+			result += each + " ";
+		}
+		
+		System.out.println(result);
+	}
+
+}

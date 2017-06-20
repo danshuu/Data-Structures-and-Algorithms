@@ -1,0 +1,30 @@
+
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class TestDriver {
+
+   @SuppressWarnings("static-access")
+   public static void main(String[] args) {
+      
+      long t1 = System.currentTimeMillis();
+      
+      int size = 3000000;
+      Integer[] array = new Integer[size];
+      Random rand = new Random(-9999);
+
+      for (int i = 0; i < size; i++) {
+         array[i] = rand.nextInt();
+      }
+
+      int kth = PriorityQueue.kth(array, size, 50);
+
+
+      System.out.println("time for smallKthBigOh: " + (System.currentTimeMillis() - t1));
+
+   }
+
+}

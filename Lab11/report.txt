@@ -1,0 +1,46 @@
+   Insertion Sort       2,500 elements     (observed):    28ms
+                        5,000 elements     (observed):    82ms
+                       10,000 elements     (observed):    145ms
+                       20,000 elements     (observed):    483ms
+                      500,000 elements   (calculated):    114587ms
+                    50,000,000 elements  (calculated):   14458880ms
+
+   Shell Variation      2,500 elements     (observed):    0ms
+                        5,000 elements     (observed):    16ms
+                       10,000 elements     (observed):    16ms
+                       20,000 elements     (observed):    48ms
+                      500,000 elements     (observed):    7194ms
+                    1,000,000 elements     (observed):    15000ms
+                    2,000,000 elements     (observed):    35000ms
+                    5,000,000 elements   (calculated):    90000ms
+                   50,000,000 elements   (calculated):    1000000ms
+
+   Hibbard Variation    2,500 elements     (observed):    0ms
+                        5,000 elements     (observed):    0ms
+                       10,000 elements     (observed):    0ms
+                       20,000 elements     (observed):    28ms
+                      500,000 elements     (observed):    2698ms
+                    1,000,000 elements     (observed):    5500ms
+                    2,000,000 elements     (observed):    10000ms
+                    5,000,000 elements   (calculated):    21000ms
+                   50,000,000 elements   (calculated):    300000ms
+
+   Sedgewick Variation  2,500 elements     (observed):    0ms
+                        5,000 elements     (observed):    0ms
+                       10,000 elements     (observed):    0ms
+                       20,000 elements     (observed):    19ms
+                      500,000 elements     (observed):    401ms
+                    1,000,000 elements     (observed):    1000ms
+                    2,000,000 elements     (observed):    2100ms
+                    5,000,000 elements   (calculated):    5300ms
+                   50,000,000 elements   (calculated):    60000ms
+
+   Heap Sort            2,500 elements     (observed):    16ms
+                        5,000 elements     (observed):    16ms
+                       10,000 elements     (observed):    27ms
+                       20,000 elements     (observed):    29ms
+                      500,000 elements     (observed):   385ms
+                    1,000,000 elements     (observed):    800ms
+                    2,000,000 elements     (observed):    1600ms
+                    5,000,000 elements   (calculated):    5000ms
+                   50,000,000 elements   (calculated):    60000ms

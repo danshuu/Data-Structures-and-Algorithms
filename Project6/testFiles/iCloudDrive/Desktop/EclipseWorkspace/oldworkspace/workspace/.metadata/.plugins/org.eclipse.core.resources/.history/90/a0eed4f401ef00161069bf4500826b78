@@ -1,0 +1,63 @@
+
+public class Lab6<T> {
+
+	private Node head;
+	private Throwable stackTrace;
+	private static int x = 0;
+//	public Lab6() {
+////		int pseudoIndex = 0;
+//		head= new Node();
+//
+//	}
+
+	public static void main(String[] args) {
+		//practice
+		System.out.println(x);
+		
+	}
+
+	public void addSimple(Node node, T e){
+		stackTrace = new Throwable();
+
+		if(node.next == null){
+			node.next = new Node(null, e);
+		} else {
+			x++;
+			addSimple(node.next, e);
+		}
+	}
+
+	public Throwable stackTrace() {
+		return stackTrace;
+	}
+	
+//	private Node addHelper(int index, Node node, T e) {
+////		stackTrace = new Throwable();
+//
+//	    if (index < 0 || index > size(head.next)) {
+//	    	throw new IndexOutOfBoundsException();
+//	    }
+//	    int psuedoIndex = 0;
+//
+//	    if (psuedoIndex == index) {
+//	    	return 
+//	    } else {
+//	    	psuedoIndex++;
+//	         node.next = add(index + 1, node.next, e);
+//	    }
+//	} //end of addhelper
+//
+	private class Node {
+		public Node next;
+		public T e;
+
+		public Node() {
+		}
+
+		public Node(Node next, T e) {
+			this.next = next;
+			this.e = e;
+		}
+	}
+
+}

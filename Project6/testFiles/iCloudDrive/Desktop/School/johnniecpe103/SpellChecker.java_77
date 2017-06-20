@@ -1,0 +1,98 @@
+import java.util.*;
+
+
+import java.io.*;
+import java.lang.*;
+//Johnnie Baba
+//CPE 103-07
+//Assignment 5
+public class SpellChecker {
+   private HashTableSC<String> spellTable;
+
+   public class MyStats{
+      private int occurs;
+      private List<Integer> list = new ArrayList<Integer>();
+      private String word;
+      private boolean isWord;
+
+      public MyStats(String word, boolean isWord, int line){
+         this.word = word;
+         this.isWord = isWord;
+         occurs = 1;
+         list.add(line);
+      }
+      public int getOccurrences(){
+         return occurs;
+      }
+
+      public List<Integer>getLineNumbers(){
+         return list;
+      }
+
+      public boolean isWord(){
+         return isWord;
+      }
+
+   }
+
+   public SpellChecker()throws FileNotFoundException{
+      Scanner s = new Scanner(new File("dictionary.txt"));
+      spellTable = new HashTableSC<String>(267119);
+      while(s.hasNext()){
+         spellTable.add(s.next());
+      }
+   }
+
+   public SpellChecker(String fileName)throws FileNotFoundException{
+      Scanner s = new Scanner(new File(fileName));
+      spellTable = new HashTableSC<String>(267119);
+      while(s.hasNext()){
+         spellTable.add(s.next());
+      }
+   }
+
+   public boolean isWord(String s){
+      if(spellTable.contains(s) || spellTable.contains(s.toLowerCase())){
+         return true;
+      }
+      return false;
+   }
+
+   public HashTableSC<String> getDictionary(){
+      return spellTable;
+   }
+
+   public HashMap<String, SpellChecker.MyStats> processFile(String fileName) throws FileNotFoundException{
+      File filer = new File(fileName);
+
+      Scanner s = new Scanner(filer).useDelimiter("[^\\w-']'");
+      HashMap<String, MyStats> hasher = new HashMap<String, MyStats>();
+      int ln = 0; //line number
+      while(s.hasNextLine()){
+         String str = s.nextLine();
+         Scanner sc = new Scanner(str).useDelimiter("[^\\w-']");
+         ln++;
+         while(sc.hasNext()){
+            String word = sc.next();
+            if(hasher.get(word) != null){
+               MyStats ms = ((MyStats)hasher.get(word));
+               ms.occurs++;
+               ms.list.add(ln);
+            }
+            else{
+               hasher.put(word, new MyStats(word,this.isWord(word), ln));
+            }
+         }
+
+      }
+      return hasher;
+
+         
+      
+
+      
+   }
+   
+
+
+}

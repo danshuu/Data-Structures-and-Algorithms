@@ -1,0 +1,105 @@
+//Johnnie Baba
+//CPE 103-07
+//Assignment 5
+import static org.junit.Assert.*;
+import org.junit.*;
+public class HashTableSCTests {
+   
+   @Test
+   public void addTest01(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      assertTrue(table.add(1));
+      assertFalse(table.add(1));
+      assertTrue(table.add(102));
+      assertFalse(table.add(102));
+      assertEquals(2, table.size());
+
+   }
+   
+   
+   @Test
+   public void removeTest01(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      assertTrue(table.add(1));
+      assertFalse(table.add(1));
+      assertTrue(table.add(102));
+      assertFalse(table.add(102));
+      assertEquals(2, table.size());
+
+      assertTrue(table.remove(1));
+      assertFalse(table.remove(1));
+      assertTrue(table.remove(102));
+      assertFalse(table.remove(102));
+      assertEquals(0, table.size());
+
+
+   }
+   
+   @Test
+   public void addTest02(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      for(int i = 0; i< 10; i++){
+         table.add(i);
+         assertTrue(table.contains(i));
+
+      }
+      assertFalse(table.contains(10));
+   }
+   
+   @Test
+   public void removeTest02(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      for(int i = 0; i< 10; i++){
+         table.add(i);
+         assertTrue(table.contains(i));
+      }
+      
+      for(int i = 0; i< 10; i++){
+         assertTrue(table.remove(i));
+         assertFalse(table.contains(i));
+      }
+   }
+   
+   @Test
+   public void collisionsTest01(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      table.add(1);
+      table.add(102);
+      table.add(203);
+      table.add(304);
+      table.add(405);
+      assertEquals(10, table.collisions());
+      assertEquals(4, table.maxCollisions());
+   }
+   
+   @Test
+   public void collisionsTest02(){
+      HashTableSC<Integer> table = new HashTableSC<Integer>(100);
+      assertEquals(PrimeTools.nextPrime(100), table.tableSize());
+      table.add(1);
+      table.add(102);
+      table.add(203);
+      table.add(304);
+      table.add(405);
+      assertEquals(10, table.collisions());
+      assertEquals(4, table.maxCollisions());
+      
+      table.add(2);
+      table.add(103);
+      table.add(204);
+      table.add(305);
+      table.add(406);
+      table.add(507);
+      table.add(608);
+      assertEquals(31, table.collisions());
+      assertEquals(6, table.maxCollisions());
+
+
+   }
+
+}

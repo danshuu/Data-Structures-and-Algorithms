@@ -1,0 +1,23 @@
+package practice;
+//import java.lang.*;
+//import java.awt.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String args[]) {
+//		String str1 = "A";
+//	    String str2 = new String("S");
+//	    String str3 = new String("B");
+//	      
+//	    int result = str1.compareTo(str2);
+//	    System.out.println(result);
+//	      
+//	    result = str2.compareTo(str3);
+//	    System.out.println(result);
+		int[] lst = new int[4];
+		int[] lst = {5,4,3,2};
+	    Arrays.sort(lst);
+	    System.out.println(lst);
+	    
+	  }
+}

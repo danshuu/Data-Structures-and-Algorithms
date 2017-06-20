@@ -1,0 +1,17 @@
+
+public class Project5 {
+	
+	private static int x;
+	private static final Object dummy = null;
+	private static final Integer y = 5;
+	public static void main(String[] args) {
+//		x++;
+//		System.out.println(x);
+		Integer[] x = new Integer[10];
+		
+		System.out.println(x[1].getClass() == (dummy.getClass()));
+		System.out.println(x[1].getClass() == y.getClass());
+//		System.out.println(x[1].equals(dummy));
+	}
+
+}

@@ -1,0 +1,35 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	ANSWERPROMPT            305A
+//	BAD                     3053
+//	COUNTER                 3019
+//	COUNTER2                3031
+//	COUNTER3                3049
+//	FAIL                    3051
+//	FIRST                   3012
+//	FIRST2                  302A
+//	FIRST3                  3042
+//	FOURTH                  3018
+//	FOURTH2                 3030
+//	FOURTH3                 3048
+//	GOOD                    3057
+//	NEG_ONE                 3063
+//	OKAY                    3055
+//	PRINT                   3058
+//	Q1                      3064
+//	Q1ANS                   3067
+//	Q2                      3065
+//	Q2ANS                   3068
+//	Q3                      3066
+//	Q3ANS                   3069
+//	RESULTFOUR              306D
+//	RESULTONE               306A
+//	RESULTTHREE             306C
+//	RESULTTWO               306B
+//	SECOND                  3014
+//	SECOND2                 302C
+//	SECOND3                 3044
+//	START                   3000
+//	THIRD                   3016
+//	THIRD2                  302E
+//	THIRD3                  3046

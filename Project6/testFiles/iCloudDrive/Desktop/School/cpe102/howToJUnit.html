@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>JUnit</title>
+<link rel="stylesheet" href="/~btjones/css/lab.css" type="text/css">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+</head>
+
+<body>
+<div class="container">
+<div class="boxed">
+<div class="header"> <h1>How To Test With JUnit</h1></div>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/JUnit">JUnit</a> is a widely used
+<a href="http://en.wikipedia.org/wiki/Unit_testing">unit testing</a>
+<a href="http://en.wikipedia.org/wiki/Software_framework">framework</a>
+for the Java programming language.  It is a member of the
+<a href="http://en.wikipedia.org/wiki/XUnit">xUnit</a> family of frameworks
+that support a wide variety of programming languages and is commonly used when
+practising
+<a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD</a>
+(test-driven development).
+</p>
+
+<p>
+Take a moment, if necessary, to familiarise yourself with the various terms and
+concepts in the previous paragraph.
+</p>
+
+<div class="header"> <h3>Environment</h3></div>
+<p>
+Because JUnit is not part of the Java Standard Library, you will need access to
+its source to be able to use it.  I have placed a public copy of
+<code>junit-4.12.jar</code> and <code>hamcrest-core-1.3.jar</code> in my
+account which you may use (when logged into the Computer Science servers or
+workstations).  The examples below will give you the details necessary to do
+so.  If you would like to use JUnit on your own machine, you can download the
+necessary files from the <a href="http://www.junit.org/">junit.org</a> web
+site.
+</p>
+
+<div class="header"> <h2>A TDD Example</h2></div>
+
+<p>
+Imagine you were going to write a simple class, <code>OddEven</code>, with
+methods to tell you if a value is odd or even.  The class will have a single
+constructor accepting an integer value and two boolean methods,
+<code>odd</code> and <code>even</code> that return <code>true</code> or
+<code>false</code> as appropriate.  Following TDD, you would want to:
+</p>
+<ol>
+   <li>
+      Develop some test cases for a small part of your code.
+   </li>
+   <li>
+      Write the test cases.
+   </li>
+   <li>
+      Write the code to be tested.
+   </li>
+   <li>
+      Run the tests.
+      <ul>
+         <li>
+            Fail?  Go back to step 3.
+         </li>
+         <li>
+            Pass?  Continue at step 1 with the next part of your code.
+         </li>
+      </ul>
+   </li>
+</ol>
+
+<p>
+For this class, I think a minimum of five values should be tested, two positive
+integers, one even and one odd, two negative integers, one even and one odd,
+and zero.  Here is a table of the test cases:
+</p>
+
+<center>
+   <table>
+      <tr class="underline">
+         <th class="rbuff">Constructor Input</th>
+         <th class="rbuff"> Expected Result for <code>even()</code></th>
+         <th>Expected Result for <code>odd()</code></th>
+      </tr>
+      <tr> <td>86</td> <td><code>true</code></td>
+         <td><code>false</code></td></tr>
+      <tr> <td>125</td> <td><code>false</code></td>
+         <td><code>true</code></td></tr>
+      <tr> <td>-62</td> <td><code>true</code></td>
+         <td><code>false</code></td></tr>
+      <tr> <td>-3</td> <td><code>false</code></td>
+         <td><code>true</code></td></tr>
+      <tr> <td>0</td> <td><code>true</code></td>
+         <td><code>false</code></td></tr>
+   </table>
+</center>
+
+<p>
+Now we write the test cases in Java using JUnit: 
+<a href="junit/OddEvenTests.java"><code>OddEvenTests</code></a>.  Be sure to
+read all of the comments as they explain much of the syntax for using JUnit.
+</p>
+
+<p>
+Next up, we write our <a href="junit/OddEven.java"><code>OddEven</code></a>
+class.  Note that there is a bug in the solution; <strong><em>don't fix it
+      until after you see how JUnit reports the failed tests</em></strong>.
+</p>
+
+<div class="header"><h3>Compiling and Running the Tests</h3></div>
+
+<p>
+To compile and run the tests with JUnit, you must specify where to find the
+<a href="https://en.wikipedia.org/wiki/JAR_(file_format)">JAR</a> files
+containing the JUnit classes.  This is done by modifying the
+<a href="https://en.wikipedia.org/wiki/Classpath_(Java)">classpath</a> which
+may be done in two ways.  The first way is to specify the path by using the
+<code>-cp</code> flag as follows (<strong><em>be sure to include the colon and
+      period at the end of the <code>-cp</code> path when
+      running</em></strong>):
+</p>
+
+<code>
+   $ javac -cp /home/btjones/Public/junit/junit-4.12.jar OddEven.java
+   OddEvenTests.java<br>
+   $ java -cp /home/btjones/Public/junit/hamcrest-core-1.3.jar:/home/btjones/Public/junit/junit-4.12.jar:.  org.junit.runner.JUnitCore OddEvenTests<br>
+</code>
+
+<p>
+This is rather tedious to type out every time we want to use JUnit.  The second
+way is to set the <code>CLASSPATH</code> environment variable.  When you do
+this, you do not need to include the <code>-cp</code> flag as shown above.
+Setting the <code>CLASSPATH</code> environment variable varies by operating
+system.  In Linux, you would do the following:
+</p>
+
+<code>
+   $ export CLASSPATH="${CLASSPATH:+"$CLASSPATH:"}/home/btjones/Public/junit/hamcrest-core-1.3.jar:/home/btjones/Public/junit/junit-4.12.jar:."<br>
+</code>
+
+<p>
+<strong><em>Be sure to include the colon and period at the end of the
+      path!</em></strong> Note that you would have to do this once every time
+you log on.  To automate the process, you can add the line above to your
+<code>.mybashrc</code>.  See me in lab if you would like help with this.
+</p>
+
+<div class="header"><h3>Reading the Output</h3></div>
+
+<p>
+Assuming you didn't fix the bug in <code>OddEven</code>, when you finally run
+the tests, you probably saw something that looked like:
+</p>
+
+<pre>
+
+   ...
+   There were 2 failures:
+   1) testOdd_negativeOdd(OddEvenTests)
+   java.lang.AssertionError
+           at org.junit.Assert.fail(Assert.java:86)
+           at org.junit.Assert.assertTrue(Assert.java:41)
+           at org.junit.Assert.assertTrue(Assert.java:52)
+           at OddEvenTests.oddTestNegative2(OddEvenTests.java:55)
+           at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+   ...
+   2) testEven_negativeOdd(OddEvenTests)
+   java.lang.AssertionError
+           at org.junit.Assert.fail(Assert.java:86)
+           at org.junit.Assert.assertTrue(Assert.java:41)
+           at org.junit.Assert.assertFalse(Assert.java:64)
+           at org.junit.Assert.assertFalse(Assert.java:74)
+           at OddEvenTests.evenTestNegative2(OddEvenTests.java:75)
+           at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+   ...
+   FAILURES!!!
+   Tests run: 10,  Failures: 2<br>
+</pre>
+
+<p>
+The information that spews forth is the stack trace.  It is a list of all the
+methods that have been called leading up the error.  All we really need to get
+out of all this is that two tests of the ten failed,
+<code>oddTestNegative2</code> and <code>evenTestNegative2</code>.  See if you
+can reason out why, fix the bug, rerun the tests, and get the output to look
+like:
+</p>
+
+<pre>
+
+   JUnit version 4.12
+   ..........
+   Time: 0.007
+
+   OK (10 tests)<br>
+</pre>
+
+<div class="header"><h3>Running Multiple Test Classes</h3></div>
+
+<p>
+You can compile and run multiple JUnit test classes at the same time (for
+programs comprised of more than one class).  To do so, you simply include the
+names of all the test classes on the command line as follows:
+</p>
+
+<code>
+   $ java org.junit.runner.JUnitCore &lt;Class1&gt; &lt;Class2&gt; ...<br>
+</code><br>
+
+<div class="header"><h3>Testing for Expected Exceptions</h3></div>
+
+<p>
+It is important to test methods that throw exceptions to make sure they
+actually throw them as expected.  The JUnit <code>@Test</code> annotation has
+an optional form that allows you to specify an expected exception.  When the
+test if run, JUnit reports success if the expected exception is thrown and a
+failure otherwise.  Don't forget to import the exception class as necessary.
+Here is a sample test method for a method that should throw an
+<code>IllegalArgumentException</code> when passed a negative number:
+</p>
+
+<pre class="prettyprint lang-java">
+
+   @Test(expected=IllegalArgumentException.class)
+   public void someTest() {
+      // Test setup...
+      SomeClass sc = new SomeClass();
+
+      // The test, call the method in a way that should result in the expected
+      // exception
+      sc.someMethod(-8);
+   }
+
+</pre>
+
+<div class="header"><h3>JUnit Quirks</h3></div>
+
+<ul>
+   <li>
+      JUnit tests will &ldquo;short-circuit&rdquo;.  This means that a test
+      method stops running when it encounters the first error.  As such, you
+      should test for different errors in separate test methods.
+   </li>
+   <li>
+      You cannot count of JUnit tests running in any particular order.  This
+      means you must not rely on anything between tests.  There are additional
+      annotations (<code>@Before</code>, <code>@After</code>,
+      <code>@BeforeClass</code>, <code>@AfterClass</code>) that give you some
+      order control within an individual test class.
+   </li>
+</ul>
+
+<p>
+To learn more about JUnit&mdash;it has much more functionality than is explored
+here&mdash;you are strongly encouraged to explore the
+<a href="http://junit.org/javadoc/latest/index.html">JUnit
+   documentation</a>, especially that of the <code>Assert</code> class to see
+the many useful testing methods.  More information is also available at
+<a href="http://www.junit.org/">junit.org</a>.
+</div>
+</div>
+</body>
+</html>
