@@ -10,8 +10,6 @@ import java.util.NoSuchElementException;
 public class CircularQueue<T> implements SimpleQueue<T> {
 	//nested class
 	public static class MyException extends RuntimeException {
-		//***why is this class public?***
-		//***also why is it static?***
 		public MyException() {
 			//empty constructor
 		}
